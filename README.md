@@ -7,6 +7,9 @@ skip days, and dies if you abandon it.
 **Kiroween 2026 — Resurrection entry.** Live demo:
 https://sawi57003-ops.github.io/codegotchi/
 
+Demo video: https://www.youtube.com/watch?v=WeW93uTpOEU
+Blog post: https://sawi57003-ops.github.io/codegotchi/blog.html
+
 ## How it works
 
 | Streak | Stage |
