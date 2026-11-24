@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codegotchi — a virtual pet that lives on your GitHub streak</title>
+<meta name="description" content="Codegotchi: the 1996 pocket virtual pet, reborn. It eats when you commit, plays when you ship, gets sick when you skip days, and dies if you abandon it. Kiroween 2026 Resurrection entry.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>CODEGOTCHI</h1>
+  <p class="tagline">The 1996 pocket pet, reborn — it lives on your GitHub streak.</p>
+</header>
+
+<main>
+  <section class="device" aria-label="Codegotchi device">
+    <div class="screen">
+      <canvas id="pet-canvas" width="140" height="120"></canvas>
+      <p id="pet-name">Byte the Egg</p>
+      <p id="status-line">Hatching...</p>
+    </div>
+
+    <div class="stats">
+      <span id="stage-label">Stage: Egg</span>
+      <span id="streak-label">Streak: 0 days</span>
+    </div>
+    <div class="meters">
+      <span id="hunger-meter">Hunger ■■■■</span>
+      <span id="happy-meter">Happy  ■■□□</span>
+    </div>
+
+    <div class="controls">
+      <button id="btn-feed" type="button">Feed (commit)</button>
+      <button id="btn-play" type="button">Play Bug Squash</button>
+      <button id="btn-medicine" type="button" style="display:none">Medicine</button>
+      <button id="btn-new-egg" type="button" style="display:none">Hatch new egg</button>
+    </div>
+  </section>
+
+  <section class="adopt">
+    <label for="user-input">GitHub username</label>
+    <input id="user-input" type="text" value="sawi57003-ops" autocomplete="off" spellcheck="false">
+    <button id="btn-adopt" type="button">Adopt</button>
+    <button id="btn-share" type="button">Share my pet</button>
+    <p class="hint">The pet reads your public GitHub activity (no login, no token).
+    If GitHub is unreachable, Feed records a manual check-in for today.</p>
+  </section>
+
+  <section class="graveyard">
+    <h2>Graveyard</h2>
+    <ul id="graveyard-list"><li>No pets lost yet. Keep the streak alive!</li></ul>
+  </section>
+
+  <section class="how">
+    <h2>How it works</h2>
+    <ul>
+      <li><strong>Egg → Baby → Child → Teen → Adult → Golden</strong> at streaks 0, 1, 3, 7, 14, 30 days.</li>
+      <li><strong>Feed</strong> with a commit (or a manual check-in) to fill hunger.</li>
+      <li><strong>Play Bug Squash</strong> (60 seconds) to raise happiness.</li>
+      <li><strong>2 idle days</strong> → sick. <strong>3+ idle days</strong> → the pet dies and joins the graveyard.</li>
+    </ul>
+  </section>
+</main>
+
+<div id="bug-overlay" class="overlay" style="display:none">
+  <div class="overlay-box">
+    <h2>Bug Squash — 60 seconds</h2>
+    <p><span id="bug-score">Squashed: 0</span> · <span id="bug-time">Time: 60s</span></p>
+    <div id="bug-arena" class="arena"></div>
+    <button id="bug-close" type="button">Give up</button>
+  </div>
+</div>
+
+<footer>
+  <p>Built with Kiro (spec-driven) for Kiroween 2026 — Resurrection.
+  Inspired by the 1996 pocket virtual pet. Codegotchi is an original work,
+  not affiliated with Bandai.</p>
+</footer>
+
+<script src="core.js"></script>
+<script src="pet/sprites.js"></script>
+<script src="pet/lines.js"></script>
+<script src="data/github.js"></script>
+<script src="game/bugsquash.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
