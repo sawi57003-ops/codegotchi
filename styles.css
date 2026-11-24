@@ -1,0 +1,120 @@
+/* Codegotchi — retro LCD egg device. Game Boy palette, no external assets. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  background: #f4f1e6;
+  color: #0f380f;
+}
+header { text-align: center; padding: 24px 12px 8px; }
+header h1 { margin: 0; font-size: 42px; letter-spacing: 6px; color: #0f380f; }
+.tagline { margin: 6px 0 0; color: #306230; }
+main { max-width: 560px; margin: 0 auto; padding: 12px; }
+
+.device {
+  background: #e8e4d8;
+  border: 4px solid #0f380f;
+  border-radius: 28px 28px 60px 60px;
+  padding: 18px 18px 24px;
+  box-shadow: 6px 6px 0 #0f380f;
+}
+.screen {
+  background: #9bbc0f;
+  border: 3px solid #0f380f;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  min-height: 240px;
+}
+#pet-canvas {
+  width: 280px;
+  height: 240px;
+  max-width: 100%;
+  image-rendering: pixelated;
+  background: #8bac0f;
+  border: 2px solid #306230;
+}
+#pet-name { font-weight: bold; margin: 10px 0 4px; font-size: 18px; }
+#status-line { margin: 4px 0; min-height: 38px; font-size: 14px; }
+.stats, .meters {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.controls button, .adopt button, .overlay-box button {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 14px;
+  background: #8bac0f;
+  color: #0f380f;
+  border: 3px solid #0f380f;
+  border-radius: 20px;
+  padding: 10px 14px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #0f380f;
+}
+.controls button:active, .adopt button:active { transform: translate(2px, 2px); box-shadow: none; }
+.controls button:disabled { opacity: 0.45; cursor: default; }
+
+.adopt { margin-top: 20px; text-align: center; }
+.adopt label { font-weight: bold; margin-right: 6px; }
+.adopt input {
+  font-family: inherit;
+  font-size: 15px;
+  padding: 8px;
+  border: 3px solid #0f380f;
+  border-radius: 8px;
+  background: #fff;
+  width: 180px;
+}
+.hint { font-size: 13px; color: #306230; }
+
+.graveyard, .how { margin-top: 24px; }
+.graveyard h2, .how h2 { font-size: 18px; border-bottom: 3px solid #0f380f; padding-bottom: 4px; }
+.graveyard ul, .how ul { padding-left: 20px; font-size: 14px; line-height: 1.7; }
+
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(15, 56, 15, 0.75);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10; padding: 12px;
+}
+.overlay-box {
+  background: #f4f1e6;
+  border: 4px solid #0f380f;
+  border-radius: 12px;
+  padding: 16px;
+  width: 380px; max-width: 100%;
+  text-align: center;
+}
+.arena {
+  position: relative;
+  width: 100%; height: 240px;
+  background: #9bbc0f;
+  border: 3px solid #0f380f;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.bug {
+  position: absolute;
+  width: 30px; height: 26px;
+  background: #222;
+  border-radius: 50% 50% 45% 45%;
+  cursor: pointer;
+}
+.bug::before, .bug::after {
+  content: "";
+  position: absolute; top: 5px;
+  width: 6px; height: 6px;
+  background: #fff; border-radius: 50%;
+}
+.bug::before { left: 6px; }
+.bug::after { right: 6px; }
+.bug.squashed { transform: scale(0.2) rotate(40deg); opacity: 0.3; transition: all 0.15s; }
+
+footer { text-align: center; font-size: 12px; color: #306230; padding: 20px 12px 32px; max-width: 560px; margin: 0 auto; }
